@@ -20,9 +20,11 @@ const images = [
   },
 ];
 
+const PHOTO_WIDTH = 192;
+
 const variants = {
   entry: (screen: any) => ({
-    x: screen ? -200 : 200,
+    x: screen ? -PHOTO_WIDTH : PHOTO_WIDTH,
     opacity: 0,
   }),
   center: {
@@ -31,7 +33,7 @@ const variants = {
     transition: { duration: 0.5 },
   },
   exit: (screen: any) => ({
-    x: screen ? 200 : -200,
+    x: screen ? PHOTO_WIDTH : -PHOTO_WIDTH,
     opcaity: 0,
     transition: { duration: 0.5 },
   }),
@@ -52,8 +54,8 @@ const CaroucelPage = () => {
   };
 
   return (
-    <div className="relative flex justify-center w-full bg-slate-500">
-      <div className="w-48 h-56 p-2 overflow-x-hidden bg-pink-300">
+    <div className="relative flex items-center justify-center w-full h-screen">
+      <div className="w-48 h-32 overflow-hidden ">
         <AnimatePresence custom={visible}>
           <motion.div
             className="flex justify-center"
@@ -64,12 +66,12 @@ const CaroucelPage = () => {
             animate="center"
             exit="exit"
           >
-            <div className="absolute bg-blue-300 w-fit h-fit">
+            <div className="absolute">
               <Image
                 alt="Img"
                 src={images[screen].url}
                 width={192}
-                height={200}
+                height={228}
               />
             </div>
           </motion.div>
