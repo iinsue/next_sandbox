@@ -20,7 +20,7 @@ const images = [
   },
 ];
 
-const PHOTO_WIDTH = 192;
+const PHOTO_WIDTH = 400;
 
 const variants = {
   entry: (screen: any) => ({
@@ -30,12 +30,12 @@ const variants = {
   center: {
     x: 0,
     opacity: 1,
-    transition: { duration: 0.5 },
+    transition: { duration: 0.5, delay: 0.2 },
   },
   exit: (screen: any) => ({
     x: screen ? PHOTO_WIDTH : -PHOTO_WIDTH,
     opcaity: 0,
-    transition: { duration: 0.5 },
+    transition: { duration: 0.3 },
   }),
 };
 
@@ -55,10 +55,10 @@ const CaroucelPage = () => {
 
   return (
     <div className="relative flex items-center justify-center w-full h-screen">
-      <div className="w-48 h-32 overflow-hidden ">
+      <div className="h-64 w-96 overflow-hidden ">
         <AnimatePresence custom={visible}>
           <motion.div
-            className="flex justify-center"
+            className=" flex justify-center"
             custom={visible}
             key={images[screen].id}
             variants={variants}
@@ -66,29 +66,28 @@ const CaroucelPage = () => {
             animate="center"
             exit="exit"
           >
-            <div className="absolute">
+            <div className="h-64 w-96 relative">
               <Image
-                alt="Img"
                 src={images[screen].url}
-                width={192}
-                height={228}
+                alt="Picture of the author"
+                layout="fill" // required
+                objectFit="cover" // change to suit your needs
               />
             </div>
           </motion.div>
         </AnimatePresence>
-
-        <div
-          onClick={prevButton}
-          className="absolute flex cursor-pointer left-1 bg-slate-500 w-fit hover:text-white"
-        >
-          <BiChevronLeftCircle size={30} />
-        </div>
-        <div
-          onClick={nextButton}
-          className="absolute flex cursor-pointer right-1 bg-slate-500 w-fit hover:text-white"
-        >
-          <BiChevronRightCircle size={30} />
-        </div>
+      </div>
+      <div
+        onClick={prevButton}
+        className="absolute flex cursor-pointer left-1 bg-slate-500 w-fit hover:text-white"
+      >
+        <BiChevronLeftCircle size={30} />
+      </div>
+      <div
+        onClick={nextButton}
+        className="absolute flex cursor-pointer right-1 bg-slate-500 w-fit hover:text-white"
+      >
+        <BiChevronRightCircle size={30} />
       </div>
     </div>
   );
