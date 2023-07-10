@@ -20,7 +20,13 @@ const variants = {
 };
 
 const NoAnimateOne = () => {
-  return <div></div>;
+  return (
+    <AnimatePresence>
+      <motion.div>
+        <div>Caroucel</div>
+      </motion.div>
+    </AnimatePresence>
+  );
 };
 
 export default NoAnimateOne;
