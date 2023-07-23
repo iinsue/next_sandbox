@@ -11,7 +11,7 @@ const CaroucelPage = () => {
       {/*  <OneCaroucel /> */}
       {/* <TwoCaroucel /> */}
       {/* <ThreeCaroucel /> */}
-      <FourCaroucel />
+      {/* <FourCaroucel /> */}
     </div>
   );
 };
