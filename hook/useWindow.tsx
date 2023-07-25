@@ -3,8 +3,10 @@
 import { useState, useEffect } from "react";
 
 function getWindowSize() {
-  const { innerWidth: width } = window;
-  return width;
+  if (typeof window !== "undefined") {
+    const { innerWidth: width } = window;
+    return width;
+  }
 }
 
 // 창 크기가 변경되면 다시 갱신하도록 하는 함수

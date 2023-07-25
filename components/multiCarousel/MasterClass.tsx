@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import useWindow from "@/hook/useWindow";
 
 const variants = {};
@@ -59,21 +59,38 @@ const images = [
     imgPath:
       "https://images.unsplash.com/photo-1658171757201-41b9aa2b3651?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   },
+  {
+    id: 11,
+    imgPath:
+      "https://images.unsplash.com/photo-1658171757201-41b9aa2b3651?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    id: 12,
+    imgPath:
+      "https://images.unsplash.com/photo-1658171757201-41b9aa2b3651?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    id: 13,
+    imgPath:
+      "https://images.unsplash.com/photo-1658171757201-41b9aa2b3651?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
 ];
 
 const MasterClass = () => {
   const width = useWindow();
+  const widthRef = useRef(null);
   const [index, setIndex] = useState(0);
   const [leaving, setLeaving] = useState(false);
   const toggleLeaving = () => setLeaving((prev) => !prev);
   const increaseIndex = () => {
-    console.log("Click");
     if (leaving) return;
     toggleLeaving();
     const totalImages = images.length - 1;
     const maxIndex = Math.floor(totalImages / offset) - 1;
     setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
   };
+
+  console.log(widthRef);
 
   return (
     <div className="w-full">
@@ -83,12 +100,13 @@ const MasterClass = () => {
       <div className="relative">
         <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
           <motion.div
-            initial={{ x: width + 5 }}
+            initial={{ x: width! + 5 }}
             animate={{ x: 0 }}
-            exit={{ x: -width - 5 }}
+            exit={{ x: -width! - 5 }}
             transition={{ type: "tween", duration: 1 }}
             key={index}
             className="grid grid-cols-6 w-full gap-[5px] absolute"
+            ref={widthRef}
           >
             {images
               .slice(1)
