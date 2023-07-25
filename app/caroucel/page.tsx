@@ -5,6 +5,7 @@ import OneCaroucel from "@/components/caroucel/OneCaroucel";
 import ThreeCaroucel from "@/components/caroucel/ThreeCaroucel";
 import TwoCaroucel from "@/components/caroucel/TwoCaroucel";
 import MasterClass from "@/components/multiCarousel/MasterClass";
+import MultiClass from "@/components/multiCarousel/MultiClass";
 
 const CaroucelPage = () => {
   return (
@@ -13,7 +14,8 @@ const CaroucelPage = () => {
       {/* <TwoCaroucel /> */}
       {/* <ThreeCaroucel /> */}
       {/* <FourCaroucel /> */}
-      <MasterClass />
+      {/* <MasterClass /> */}
+      <MultiClass />
     </div>
   );
 };

@@ -3,9 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 import useWindow from "@/hook/useWindow";
 
-const variants = {};
-
-const offset = 6;
+const offset = 5;
 
 // 이미지 더미 데이터
 const images = [
@@ -76,34 +74,78 @@ const images = [
   },
 ];
 
-const MasterClass = () => {
+const variants = {
+  initial: (props: any) => {
+    return {
+      x: props.direction > 0 ? props.width : -props.width,
+      opacity: 0,
+    };
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      x: { type: "spring", stiffness: 300, damping: 30 },
+      opcaity: { duration: 0.2 },
+    },
+  },
+  exit: (props: any) => {
+    return {
+      x: props.direction > 0 ? -props.width : props.width,
+      opcaity: 0,
+      transition: {
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.2 },
+      },
+    };
+  },
+};
+
+const MultiClass = () => {
   const width = useWindow();
   const widthRef = useRef(null);
   const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
   const [leaving, setLeaving] = useState(false);
   const toggleLeaving = () => setLeaving((prev) => !prev);
   const increaseIndex = () => {
+    setDirection(1);
     if (leaving) return;
     toggleLeaving();
+
     const totalImages = images.length - 1;
     const maxIndex = Math.floor(totalImages / offset) - 1;
     setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
   };
 
+  const decreaseIndex = () => {
+    setDirection(-1);
+    if (leaving) return;
+    toggleLeaving();
+
+    const totalImages = images.length - 1;
+    const maxIndex = Math.floor(totalImages / offset) - 1;
+    setIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
+  };
+
   return (
-    <div className="w-full">
+    <div className="w-[1000px] h-[250px] bg-slate-400 overflow-x-hidden">
       <div onClick={increaseIndex} className="bg-slate-400">
-        Click
+        Right
       </div>
-      <div className="relative">
+      <div onClick={decreaseIndex} className="bg-slate-400">
+        Left
+      </div>
+      <div className="relative w-full">
         <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
           <motion.div
-            initial={{ x: width! + 5 }}
-            animate={{ x: 0 }}
-            exit={{ x: -width! - 5 }}
-            transition={{ type: "tween", duration: 1 }}
+            variants={variants}
+            animate="animate"
+            initial="initial"
+            exit="exit"
+            custom={{ direction, width }}
             key={index}
-            className="grid grid-cols-6 w-full gap-[5px] absolute"
+            className="grid grid-cols-5 w-full gap-[5px] absolute"
             ref={widthRef}
           >
             {images
@@ -128,4 +170,4 @@ const MasterClass = () => {
   );
 };
 
-export default MasterClass;
+export default MultiClass;
