@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import useWindow from "@/hook/useWindow";
 
 const offset = 5;
@@ -76,8 +76,17 @@ const images = [
 
 const variants = {
   initial: (props: any) => {
+    const { direction, width } = props;
+    let result = width;
+
+    if (direction === 1) {
+      result = width;
+    } else if (direction === -1) {
+      result = -width;
+    }
+
     return {
-      x: props.direction > 0 ? props.width : -props.width,
+      x: result,
       opacity: 0,
     };
   },
@@ -90,28 +99,33 @@ const variants = {
     },
   },
   exit: (props: any) => {
+    const { direction, width } = props;
+    let result = width;
+
+    if (direction === 0) {
+      result = -width;
+    } else if (direction === -1) {
+      result = width;
+    }
+
     return {
-      x: props.direction > 0 ? -props.width : props.width,
-      opcaity: 0,
-      transition: {
-        x: { type: "spring", stiffness: 300, damping: 30 },
-        opacity: { duration: 0.2 },
-      },
+      x: result,
+      opacity: 0,
     };
   },
 };
 
 const MultiClass = () => {
   const width = useWindow();
-  const widthRef = useRef(null);
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [leaving, setLeaving] = useState(false);
   const toggleLeaving = () => setLeaving((prev) => !prev);
+
   const increaseIndex = () => {
-    setDirection(1);
     if (leaving) return;
     toggleLeaving();
+    setDirection(() => 1);
 
     const totalImages = images.length - 1;
     const maxIndex = Math.floor(totalImages / offset) - 1;
@@ -119,14 +133,18 @@ const MultiClass = () => {
   };
 
   const decreaseIndex = () => {
-    setDirection(-1);
     if (leaving) return;
     toggleLeaving();
+    setDirection(() => -1);
 
     const totalImages = images.length - 1;
     const maxIndex = Math.floor(totalImages / offset) - 1;
     setIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
   };
+
+  useEffect(() => {
+    leaving && setDirection(0);
+  }, [leaving]);
 
   return (
     <div className="w-[1000px] h-[250px] bg-slate-400 overflow-x-hidden">
@@ -146,7 +164,6 @@ const MultiClass = () => {
             custom={{ direction, width }}
             key={index}
             className="grid grid-cols-5 w-full gap-[5px] absolute"
-            ref={widthRef}
           >
             {images
               .slice(1)
