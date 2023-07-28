@@ -52,6 +52,7 @@ const OneCaroucel = () => {
     setScreen((prev) => (prev > 1 ? 0 : prev + 1));
   };
 
+  console.log(screen);
   // 이전 버튼
   const prevButton = () => {
     setScreen((prev) => (prev <= 0 ? images.length - 1 : prev - 1));
