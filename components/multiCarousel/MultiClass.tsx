@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 import useWindow from "@/hook/useWindow";
 
+// 화면에 보여줄 컨텐츠 개수
 const offset = 5;
 
 // 이미지 더미 데이터
@@ -74,6 +75,7 @@ const images = [
   },
 ];
 
+// 애니메이션 설정
 const variants = {
   initial: (props: any) => {
     return {
@@ -96,13 +98,19 @@ const variants = {
   },
 };
 
+// 메인 함수
 const MultiClass = () => {
+  // 캐러셀 보여지는 너비
   const width = useWindow();
+
   const widthRef = useRef(null);
+
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [leaving, setLeaving] = useState(false);
   const toggleLeaving = () => setLeaving((prev) => !prev);
+
+  // 오른쪽 클릭
   const increaseIndex = () => {
     if (leaving) return;
     toggleLeaving();
@@ -113,6 +121,7 @@ const MultiClass = () => {
     setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
   };
 
+  // 왼쪽 클릭
   const decreaseIndex = () => {
     if (leaving) return;
     toggleLeaving();
