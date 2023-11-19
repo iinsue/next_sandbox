@@ -13,6 +13,9 @@ export default function Home() {
       <Link href={"/table"}>
         <Button variant="link">테이블</Button>
       </Link>
+      <Link href={"/query"}>
+        <Button variant="link">쿼리 예제</Button>
+      </Link>
     </div>
   );
 }
