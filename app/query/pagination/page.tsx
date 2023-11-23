@@ -1,7 +1,9 @@
+import { Pagination } from "./_components/pagination";
+
 const PaginationPage = () => {
   return (
     <>
-      <div>Pagination Page</div>
+      <Pagination />
     </>
   );
 };
