@@ -9,36 +9,15 @@ import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import MyCustomAutoFocusPlugin from "./plugins/MyCustomAutoFocusPlugin";
 import TextChangePlugin from "./plugins/TextChangePlugin";
-
-const theme = {
-  ltr: "ltr",
-  rtl: "rtl",
-  placeholder: "editor-placeholder",
-  paragraph: "editor-paragraph",
-};
-
-/* 
-Catch any errors that occur during Lexical updates and log them or
-throw them as needed. If you don't throw them, Lexical will try to
-recover gracefully without losing user data.
-*/
-function onError(error: Error) {
-  console.error(error);
-}
+import EditorConfig from "./config";
 
 function Placeholder() {
   return <div className="editor-placeholder">Enter some plain text...</div>;
 }
 
 export const Editor = () => {
-  const initialConfig = {
-    namespace: "MyEditor",
-    theme,
-    onError,
-  };
-
   return (
-    <LexicalComposer initialConfig={initialConfig}>
+    <LexicalComposer initialConfig={EditorConfig}>
       <div className="editor-container border rounded-md">
         <PlainTextPlugin
           contentEditable={<ContentEditable className="editor-input" />}
