@@ -5,8 +5,10 @@ import { $getRoot, $getSelection } from "lexical";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { PlainTextPlugin } from "@lexical/react/LexicalPlainTextPlugin";
+import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import MyCustomAutoFocusPlugin from "./plugins/MyCustomAutoFocusPlugin";
+import TextChangePlugin from "./plugins/TextChangePlugin";
 
 const theme = {
   ltr: "ltr",
@@ -43,6 +45,7 @@ export const Editor = () => {
           placeholder={<Placeholder />}
           ErrorBoundary={LexicalErrorBoundary}
         />
+        <OnChangePlugin onChange={TextChangePlugin} />
         <MyCustomAutoFocusPlugin />
       </div>
     </LexicalComposer>
