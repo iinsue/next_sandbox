@@ -11,10 +11,13 @@ export default function Home() {
         <Button variant="link">캐러셀</Button>
       </Link>
       <Link href={"/table"}>
-        <Button variant="link">테이블</Button>
+        <Button variant="link">Table Example</Button>
       </Link>
       <Link href={"/query"}>
-        <Button variant="link">쿼리 예제</Button>
+        <Button variant="link">React Query Example</Button>
+      </Link>
+      <Link href="/board">
+        <Button variant="link">Text Editor</Button>
       </Link>
     </div>
   );
