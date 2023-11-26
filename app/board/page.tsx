@@ -4,9 +4,14 @@ import Link from "next/link";
 const BoardPage = () => {
   return (
     <>
-      <Link href="/board/lexical">
-        <Button variant="link">Lexical</Button>
-      </Link>
+      <div className="bg-slate-100 h-full flex flex-col items-center pt-10">
+        <Link href="/board/lexical/rich">
+          <Button variant="link">Lexical Rich Text Example</Button>
+        </Link>
+        <Link href="/board/lexical/plain">
+          <Button variant="link">Lexical Plain Text Example</Button>
+        </Link>
+      </div>
     </>
   );
 };
