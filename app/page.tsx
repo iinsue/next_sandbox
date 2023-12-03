@@ -22,6 +22,9 @@ export default function Home() {
       <Link href="/board">
         <Button variant="link">Text Editor</Button>
       </Link>
+      <Link href="/shad/dashboard">
+        <Button variant="link">Dashboard</Button>
+      </Link>
     </div>
   );
 }
