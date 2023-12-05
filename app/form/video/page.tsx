@@ -4,18 +4,18 @@ import { useCallback, useEffect, useRef } from "react";
 import FilesDragAndDrop from "./_components/drag-drop";
 
 const VideoUploadPage = () => {
-  const dropRef = useRef(null);
+  const dropRef = useRef<HTMLDivElement>(null);
 
   const onUpload = (files: any) => {
     console.log(files);
   };
 
-  const handleDragOver = useCallback((event: any) => {
+  const handleDragOver = useCallback((event: DragEvent) => {
     event.preventDefault();
     event.stopPropagation();
   }, []);
 
-  const handleDrop = useCallback((event: any) => {
+  const handleDrop = useCallback((event: React.DragEvent) => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -29,13 +29,18 @@ const VideoUploadPage = () => {
   useEffect(() => {
     if (dropRef.current) {
       dropRef.current.addEventListener("dragover", handleDragOver);
-      dropRef.current.addEventListener("drop", handleDrop);
+      dropRef.current.addEventListener("drop", handleDrop as any);
     }
 
     return () => {
-      dropRef.current.removeEventListener("dragover", handleDragOver);
-      dropRef.current.removeEventListener("drop", handleDrop);
+      if (dropRef.current) {
+        dropRef.current.removeEventListener("dragover", handleDragOver);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        dropRef.current.removeEventListener("drop", handleDrop as any);
+      }
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
