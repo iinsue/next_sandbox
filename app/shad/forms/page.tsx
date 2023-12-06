@@ -1,7 +1,9 @@
+import { ProfileForm } from "./_components/profile-form";
+
 const FormsPage = () => {
   return (
     <>
-      <div>Forms Page</div>
+      <ProfileForm />
     </>
   );
 };
