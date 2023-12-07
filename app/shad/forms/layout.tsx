@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { ReactNode } from "react";
 
 import { Separator } from "@/components/ui/separator";
+import { SidebarNav } from "./_components/sidebar-nav";
 
 export const metadata: Metadata = {
   title: "Forms",
@@ -12,23 +13,23 @@ export const metadata: Metadata = {
 const sidebarNavItems = [
   {
     title: "Profile",
-    href: "/examples/forms",
+    href: "/shad/forms",
   },
   {
     title: "Account",
-    href: "/examples/forms/account",
+    href: "/shad/forms/account",
   },
   {
     title: "Appearance",
-    href: "/examples/forms/appearance",
+    href: "/shad/forms/appearance",
   },
   {
     title: "Notifications",
-    href: "/examples/forms/notifications",
+    href: "/shad/forms/notifications",
   },
   {
     title: "Display",
-    href: "/examples/forms/display",
+    href: "/shad/forms/display",
   },
 ];
 
@@ -64,7 +65,9 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
         </div>
         <Separator className="my-6" />
         <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
-          <aside className="-mx-4 lg:w-1/5"></aside>
+          <aside className="-mx-4 lg:w-1/5">
+            <SidebarNav items={sidebarNavItems} />
+          </aside>
           <div className="flex-1 lg:max-w-2xl">{children}</div>
         </div>
       </div>
