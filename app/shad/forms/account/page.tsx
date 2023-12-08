@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator";
+import { AccountForm } from "./_components/account-form";
 
 const SettingsAccountPage = () => {
   return (
@@ -12,6 +13,7 @@ const SettingsAccountPage = () => {
           </p>
         </div>
         <Separator />
+        <AccountForm />
       </div>
     </>
   );
