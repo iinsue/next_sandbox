@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator";
+import { AppearanceForm } from "./_components/appearance-form";
 
 const SettingsAppearancePage = () => {
   return (
@@ -11,6 +12,7 @@ const SettingsAppearancePage = () => {
         </p>
       </div>
       <Separator />
+      <AppearanceForm />
     </div>
   );
 };
