@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator";
+import { NotificationsForm } from "./notifications-form";
 
 const SettingsNotificationsPage = () => {
   return (
@@ -10,6 +11,7 @@ const SettingsNotificationsPage = () => {
         </p>
       </div>
       <Separator />
+      <NotificationsForm />
     </div>
   );
 };
