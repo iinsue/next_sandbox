@@ -97,6 +97,7 @@ export function NotificationsForm() {
                   </FormItem>
                 </RadioGroup>
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
