@@ -125,8 +125,76 @@ export function NotificationsForm() {
                 </FormItem>
               )}
             />
+            <FormField
+              control={form.control}
+              name="marketing_emails"
+              render={({ field }) => (
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                  <div className="space-y-0.5">
+                    <FormLabel className="text-base">
+                      Marketing emails
+                    </FormLabel>
+                    <FormDescription>
+                      Receive emails about new products, features, and more.
+                    </FormDescription>
+                  </div>
+                  <FormControl>
+                    <Switch
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="marketing_emails"
+              render={({ field }) => (
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                  <div className="space-y-0.5">
+                    <FormLabel className="text-base">Security emails</FormLabel>
+                    <FormDescription>
+                      Receive emails about your account activity and security.
+                    </FormDescription>
+                  </div>
+                  <FormControl>
+                    <Switch
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                      disabled
+                      aria-readonly
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
           </div>
         </div>
+        <FormField
+          control={form.control}
+          name="mobile"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel>
+                  Use different settings for my mobile devices
+                </FormLabel>
+                <FormDescription>
+                  You can manage your mobile notifications in the{" "}
+                  <Link href="/examples/forms">mobile settings</Link> page.
+                </FormDescription>
+              </div>
+            </FormItem>
+          )}
+        />
+        <Button type="submit">Update notifications</Button>
       </form>
     </Form>
   );
