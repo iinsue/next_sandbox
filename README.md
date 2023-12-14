@@ -20,3 +20,7 @@ Framer motion 기본 캐러셀
 
 ### Shadcn 예제
 - Form
+  - Profile
+  - Account
+  - Notifications
+  - Display (예정)
