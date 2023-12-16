@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator";
+import { DisplayForm } from "./display-form";
 
 const SettingsDisplayPage = () => {
   return (
@@ -11,6 +12,7 @@ const SettingsDisplayPage = () => {
           </p>
         </div>
         <Separator />
+        <DisplayForm />
       </div>
     </>
   );
