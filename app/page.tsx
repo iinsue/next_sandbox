@@ -25,6 +25,9 @@ export default function Home() {
       <Link href="/shad/dashboard">
         <Button variant="link">Dashboard</Button>
       </Link>
+      <Link href="/virtual">
+        <Button variant="link">Virtual</Button>
+      </Link>
     </div>
   );
 }
