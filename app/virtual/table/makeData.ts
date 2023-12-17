@@ -36,7 +36,7 @@ const newPerson = (index: number): Person => {
   };
 };
 
-export const makeDate = (...lens: number[]) => {
+export const makeData = (...lens: number[]) => {
   const makeDataLevel = (depth = 0): Person[] => {
     const len = lens[depth]!;
     return range(len).map((d): Person => {
