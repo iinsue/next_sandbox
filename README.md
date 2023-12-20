@@ -30,3 +30,5 @@ Framer motion 기본 캐러셀
 - variable
 - table
 - dynamic
+    
+UpdatedAt 2023 12 20
