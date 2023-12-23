@@ -1,6 +1,5 @@
 "use client";
 
-import { useVirtualizer } from "@tanstack/react-virtual";
 import { RowVirtualizerVariable } from "./_components/row-variable";
 
 const rows = new Array(10000)
@@ -15,8 +14,8 @@ const VirtualVariablePage = () => {
   return (
     <>
       <div className="bg-slate-50 h-full flex justify-center p-8">
-        <div>
-          <p>
+        <div className="w-full flex flex-col items-center">
+          <p className="w-[400px]">
             These components are using <strong>variable</strong> sizes. This
             means that each element has a unique, but knowable dimension at
             render time.
