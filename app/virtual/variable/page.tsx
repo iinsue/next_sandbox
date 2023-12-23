@@ -1,6 +1,7 @@
 "use client";
 
 import { useVirtualizer } from "@tanstack/react-virtual";
+import { RowVirtualizerVariable } from "./_components/row-variable";
 
 const rows = new Array(10000)
   .fill(true)
@@ -13,7 +14,7 @@ const columns = new Array(10000)
 const VirtualVariablePage = () => {
   return (
     <>
-      <div className="bg-slate-50 h-full flex justify-center">
+      <div className="bg-slate-50 h-full flex justify-center p-8">
         <div>
           <p>
             These components are using <strong>variable</strong> sizes. This
@@ -23,6 +24,7 @@ const VirtualVariablePage = () => {
           <br />
           <br />
           <h3>Rows</h3>
+          <RowVirtualizerVariable rows={rows} />
           <br />
           <br />
           <h3>Columns</h3>
