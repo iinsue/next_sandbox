@@ -17,6 +17,9 @@ const VirtualMain = () => {
         <Link href="/virtual/table">
           <Button variant="link">Tanstack Virtual Table Example</Button>
         </Link>
+        <Link href="/virtual/smooth">
+          <Button variant="link">Tanstack Virtual Smooth Example</Button>
+        </Link>
       </div>
     </>
   );
