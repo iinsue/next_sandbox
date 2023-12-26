@@ -22,7 +22,7 @@ const SubtitlePage = () => {
 
   return (
     <>
-      <div className="w-[400px] h-[300px]">
+      <div className="w-[400px] h-full">
         <div
           ref={parentRef}
           className="w-full h-full max-w-full bg-slate-200"
