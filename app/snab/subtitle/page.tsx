@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { makeData, Subtitle } from "./_components/makeData";
 import { useVirtualizer } from "@tanstack/react-virtual";
+import { SubtitlesHeader } from "./_components/header";
 
 const SubtitlePage = () => {
   const [data, setData] = useState(makeData(2000));
@@ -22,49 +23,51 @@ const SubtitlePage = () => {
 
   return (
     <>
-      <div className="w-[42.5rem] h-full">
-        <div
-          ref={parentRef}
-          className="w-full h-full max-w-full bg-slate-200"
-          style={{
-            contain: "strict",
-            overflow: "auto",
-          }}
-        >
+      <SubtitlesHeader>
+        <div className="w-[42.5rem] h-full">
           <div
-            className="w-full"
+            ref={parentRef}
+            className="w-full h-full max-w-full bg-slate-200"
             style={{
-              height: virtualizer.getTotalSize(),
-              position: "relative",
+              contain: "strict",
+              overflow: "auto",
             }}
           >
-            {virtualItems.map((virtualRow) => (
-              <div
-                key={virtualRow.key}
-                ref={virtualizer.measureElement}
-                data-index={virtualRow.index}
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  transform: `translateY(${virtualItems[0]?.start ?? 0}px)`,
-                }}
-              >
-                {virtualItems.map((virtualRow) => (
-                  <div
-                    key={virtualRow.key}
-                    ref={virtualizer.measureElement}
-                    data-index={virtualRow.index}
-                  >
-                    <div>{data[virtualRow.index].transcription}</div>
-                  </div>
-                ))}
-              </div>
-            ))}
+            <div
+              className="w-full"
+              style={{
+                height: virtualizer.getTotalSize(),
+                position: "relative",
+              }}
+            >
+              {virtualItems.map((virtualRow) => (
+                <div
+                  key={virtualRow.key}
+                  ref={virtualizer.measureElement}
+                  data-index={virtualRow.index}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    transform: `translateY(${virtualItems[0]?.start ?? 0}px)`,
+                  }}
+                >
+                  {virtualItems.map((virtualRow) => (
+                    <div
+                      key={virtualRow.key}
+                      ref={virtualizer.measureElement}
+                      data-index={virtualRow.index}
+                    >
+                      <div>{data[virtualRow.index].transcription}</div>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </SubtitlesHeader>
     </>
   );
 };
