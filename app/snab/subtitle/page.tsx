@@ -60,8 +60,13 @@ const SubtitlePage = () => {
                       ref={virtualizer.measureElement}
                       data-index={virtualRow.index}
                     >
-                      <div className="bg-red-100 text-xs h-[20px] hover:text-blue-700">
-                        {data[virtualRow.index].transcription}
+                      {/* 배경색이 없는 경우 겹쳐 보임. */}
+                      <div className="text-xs bg-white relative group">
+                        {/* 기본 높이가 있어야 group-focus 로 높이 애니메이션이 가능함. */}
+                        <label className="h-4 flex group-focus-within:h-12 bg-red-100 transform transition-all duration-300">
+                          {data[virtualRow.index].transcription}
+                          <input />
+                        </label>
                       </div>
                     </div>
                   ))}
