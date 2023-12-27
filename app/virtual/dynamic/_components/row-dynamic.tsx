@@ -50,7 +50,7 @@ export const RowVirtualizerDynamic = () => {
             height: virtualizer.getTotalSize(),
           }}
         >
-          {virtualizer.getVirtualItems().map((virtualColumn) => (
+          {items.map((virtualColumn) => (
             <div
               key={virtualColumn.key}
               ref={virtualizer.measureElement}

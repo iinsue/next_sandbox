@@ -16,6 +16,7 @@ const SubtitlePage = () => {
     count: data.length,
     getScrollElement: () => parentRef.current,
     estimateSize: () => 60,
+    overscan: 10,
   });
 
   // React VirtualItem
@@ -40,11 +41,11 @@ const SubtitlePage = () => {
                 position: "relative",
               }}
             >
-              {virtualItems.map((virtualRow) => (
+              {virtualItems.map((virtualColumn) => (
                 <div
-                  key={virtualRow.key}
+                  key={virtualColumn.key}
                   ref={virtualizer.measureElement}
-                  data-index={virtualRow.index}
+                  data-index={virtualColumn.index}
                   style={{
                     position: "absolute",
                     top: 0,
@@ -59,7 +60,9 @@ const SubtitlePage = () => {
                       ref={virtualizer.measureElement}
                       data-index={virtualRow.index}
                     >
-                      <div>{data[virtualRow.index].transcription}</div>
+                      <div className="bg-red-100 text-xs h-[20px] hover:text-blue-700">
+                        {data[virtualRow.index].transcription}
+                      </div>
                     </div>
                   ))}
                 </div>
