@@ -31,4 +31,4 @@ Framer motion 기본 캐러셀
 - table
 - dynamic
     
-UpdatedAt 2023 12 28
+UpdatedAt 2023 12 29
