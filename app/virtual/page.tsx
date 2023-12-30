@@ -5,20 +5,23 @@ const VirtualMain = () => {
   return (
     <>
       <div className="bg-slate-100 h-full flex flex-col items-center pt-10">
+        <Link href="/virtual/dynamic">
+          <Button variant="link">Tanstack Virtual Dynamic Example</Button>
+        </Link>
         <Link href="/virtual/fixed">
           <Button variant="link">Tanstack Virtual Fixed Exmaple</Button>
         </Link>
-        <Link href="/virtual/variable">
-          <Button variant="link">Tanstack Virtaul Variable Example</Button>
+        <Link href="/virtual/infinite">
+          <Button variant="link">Tanstack Virtual Infinite Example</Button>
         </Link>
-        <Link href="/virtual/dynamic">
-          <Button variant="link">Tanstack Virtual Dynamic Example</Button>
+        <Link href="/virtual/smooth">
+          <Button variant="link">Tanstack Virtual Smooth Example</Button>
         </Link>
         <Link href="/virtual/table">
           <Button variant="link">Tanstack Virtual Table Example</Button>
         </Link>
-        <Link href="/virtual/smooth">
-          <Button variant="link">Tanstack Virtual Smooth Example</Button>
+        <Link href="/virtual/variable">
+          <Button variant="link">Tanstack Virtaul Variable Example</Button>
         </Link>
       </div>
     </>
