@@ -2,7 +2,7 @@
 
 import { loremIpsum } from "lorem-ipsum";
 import { useEffect, useState } from "react";
-import { List } from "react-virtualized";
+import { AutoSizer, List } from "react-virtualized";
 
 const rowCount = 5000;
 const listHeight = 400;
@@ -55,15 +55,19 @@ const VirtualizedListPage = () => {
   return (
     <>
       <div className="text-center">
-        <div className="p-[10px]">
-          <List
-            width={rowWidth}
-            height={listHeight}
-            rowHeight={rowHeight}
-            rowRenderer={renderRow}
-            rowCount={list.length}
-            overscanRowCount={3}
-          />
+        <div className="p-[10px] h-[calc(100vh-20px)]">
+          <AutoSizer>
+            {({ width, height }) => (
+              <List
+                width={width}
+                height={height}
+                rowHeight={rowHeight}
+                rowRenderer={renderRow}
+                rowCount={list.length}
+                overscanRowCount={3}
+              />
+            )}
+          </AutoSizer>
         </div>
       </div>
     </>
