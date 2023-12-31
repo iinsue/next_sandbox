@@ -30,7 +30,7 @@ const renderRow = ({ index, key, style }: any) => {
     <div
       key={key}
       style={style}
-      className="border-b border-[#ebeced] mx-[5px] my-0 flex items-center"
+      className="border-b border-[#ebeced] mx-[5px] my-0 flex items-center text-left"
     >
       <div className="mr-[10px]">
         <img src={list[index].image} alt="" />
@@ -54,7 +54,7 @@ const VirtualizedListPage = () => {
 
   return (
     <>
-      <div>
+      <div className="text-center">
         <div className="p-[10px]">
           <List
             width={rowWidth}
