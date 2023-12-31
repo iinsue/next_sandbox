@@ -2,7 +2,12 @@
 
 import { loremIpsum } from "lorem-ipsum";
 import { useEffect, useState } from "react";
-import { AutoSizer, List } from "react-virtualized";
+import {
+  AutoSizer,
+  List,
+  CellMeasurer,
+  CellMeasurerCache,
+} from "react-virtualized";
 
 const rowCount = 5000;
 const listHeight = 400;
@@ -19,27 +24,42 @@ const list = Array(rowCount)
       text: loremIpsum({
         count: 1,
         units: "sentences",
-        sentenceLowerBound: 4,
-        sentenceUpperBound: 8,
+        sentenceLowerBound: 2,
+        sentenceUpperBound: 100,
       }),
     };
   });
 
-const renderRow = ({ index, key, style }: any) => {
+const cache = new CellMeasurerCache({
+  fixedWidth: true,
+  defaultHeight: 100,
+});
+
+const renderRow = ({ index, key, style, parent }: any) => {
   return (
-    <div
+    <CellMeasurer
       key={key}
-      style={style}
-      className="border-b border-[#ebeced] mx-[5px] my-0 flex items-center text-left"
+      cache={cache}
+      parent={parent}
+      columnIndex={0}
+      rowIndex={index}
     >
-      <div className="mr-[10px]">
-        <img src={list[index].image} alt="" />
-      </div>
-      <div className="p-[10px]">
-        <div>{list[index].name}</div>
-        <div>{list[index].text}</div>
-      </div>
-    </div>
+      {({ registerChild }) => (
+        <div
+          style={style}
+          ref={registerChild as undefined}
+          className="border-b border-[#ebeced] mx-0 my-[5px] flex items-center text-left"
+        >
+          <div className="mr-[10px] min-w-[40px]">
+            <img src={list[index].image} alt="" />
+          </div>
+          <div className="p-[10px]">
+            <div>{list[index].name}</div>
+            <div>{list[index].text}</div>
+          </div>
+        </div>
+      )}
+    </CellMeasurer>
   );
 };
 
@@ -61,7 +81,8 @@ const VirtualizedListPage = () => {
               <List
                 width={width}
                 height={height}
-                rowHeight={rowHeight}
+                deferredMeasurementCache={cache}
+                rowHeight={cache.rowHeight}
                 rowRenderer={renderRow}
                 rowCount={list.length}
                 overscanRowCount={3}
