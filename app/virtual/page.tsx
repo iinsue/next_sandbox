@@ -26,6 +26,10 @@ const VirtualMain = () => {
         <Link href="/virtual/variable">
           <Button variant="link">Tanstack Virtaul Variable Example</Button>
         </Link>
+        <br />
+        <Link href="/virtual/list">
+          <Button variant="link">React Virtualized List Example</Button>
+        </Link>
       </div>
     </>
   );
