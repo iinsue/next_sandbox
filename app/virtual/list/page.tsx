@@ -67,7 +67,7 @@ const renderRow = ({ index, key, style, parent }: any) => {
         <div
           style={style}
           ref={registerChild as undefined}
-          className="border-b border-[#ebeced] mx-0 my-[5px] flex items-center text-left flex-wrap"
+          className="border-b border-[#ebeced] mx-0 my-[5px] flex items-center text-left flex-wrap transform transition-all duration-300 will-change-transform"
         >
           <Collapsible title={list[index].name} onChange={measure}>
             <div className="mr-[10px] min-w-[40px]">
