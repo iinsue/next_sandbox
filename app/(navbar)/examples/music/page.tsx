@@ -5,12 +5,12 @@ const MusicPage = () => {
     <>
       <div>Music Image</div>
       <div>
-        <Tabs>
+        <Tabs defaultValue="music">
           <div>
             <TabsList>
-              <TabsTrigger value="music">Music</TabsTrigger>
-              <TabsTrigger value="podcasts">Podcasts</TabsTrigger>
-              <TabsTrigger value="live">Live</TabsTrigger>
+              <TabsTrigger value="music">Mail</TabsTrigger>
+              <TabsTrigger value="podcasts">Forms</TabsTrigger>
+              <TabsTrigger value="live">Music</TabsTrigger>
             </TabsList>
             <div>
               <TabsContent value="music">MusicContents</TabsContent>
