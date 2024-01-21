@@ -1,11 +1,33 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MusicMain } from "./music/main";
+import { FormsComponent } from "./forms/main";
+import { LiveComponent } from "./live/main";
+import { Button } from "@/components/ui/button";
 
-const tab = [
+const tabs = [
   {
+    type: "tab",
     title: "Music",
     value: "music",
     content: <MusicMain />,
+  },
+  {
+    type: "tab",
+    title: "Forms",
+    value: "forms",
+    content: <FormsComponent />,
+  },
+  {
+    type: "tab",
+    title: "Live",
+    value: "live",
+    content: <LiveComponent />,
+  },
+  {
+    type: "button",
+    title: "Button",
+    value: "button",
+    content: <LiveComponent />,
   },
 ];
 
@@ -15,14 +37,22 @@ export const TabHeader = () => {
       <Tabs defaultValue="music">
         <div>
           <TabsList>
-            <TabsTrigger value="music">Mail</TabsTrigger>
-            <TabsTrigger value="podcasts">Forms</TabsTrigger>
-            <TabsTrigger value="live">Music</TabsTrigger>
+            {tabs.map((tab) =>
+              tab.type === "button" ? (
+                <Button key={tab.value}>{tab.title}</Button>
+              ) : (
+                <TabsTrigger value={tab.value} key={tab.value}>
+                  {tab.title}
+                </TabsTrigger>
+              )
+            )}
           </TabsList>
           <div>
-            <TabsContent value="music">MusicContents</TabsContent>
-            <TabsContent value="podcasts">PodCastContents</TabsContent>
-            <TabsContent value="live">LiveContents</TabsContent>
+            {tabs.map((tab) => (
+              <TabsContent key={tab.value} value={tab.value}>
+                {tab.content}
+              </TabsContent>
+            ))}
           </div>
         </div>
       </Tabs>
