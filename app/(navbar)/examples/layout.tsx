@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 
 import { buttonVariants } from "@/components/ui/button";
 import { Announcement } from "./_components/announcement";
+import { ExamplesNav } from "./_components/examples-nav";
+
 import {
   PageHeader,
   PageHeaderHeading,
@@ -51,6 +53,7 @@ export default function ExampleLayout({ children }: ExamplesLayoutProps) {
           </PageAction>
         </PageHeader>
         <section>
+          <ExamplesNav />
           <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-xl">
             {children}
           </div>
