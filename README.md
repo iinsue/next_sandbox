@@ -11,6 +11,7 @@ Framer motion 기본 캐러셀
 - Hook 예제
 - innerWidth 를 사용한 캐러셀
 - useLayout 학습 해보기
+- Navbar
 
 ### Reac Query 예제    
 - Basic
@@ -31,4 +32,4 @@ Framer motion 기본 캐러셀
 - table
 - dynamic
     
-UpdatedAt 2023 12 29
+UpdatedAt 2024 01 22 - Mon
