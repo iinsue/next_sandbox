@@ -1,7 +1,7 @@
 export const Header = () => {
   return (
     <>
-      <div>Header</div>
+      <div className=" h-10 shadow-md">Header</div>
     </>
   );
 };
