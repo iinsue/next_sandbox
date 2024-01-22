@@ -1,5 +1,6 @@
 "use client";
 
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -37,6 +38,37 @@ export const SubHeader = ({
         ))}
       </div>
       <div>{children}</div>
+    </>
+  );
+};
+
+interface SubTabProps extends React.HTMLAttributes<HTMLDivElement> {
+  tabList: {
+    title: string;
+    value: string;
+  }[];
+}
+
+export const SubTab = ({
+  tabList,
+  className,
+  children,
+  ...props
+}: SubTabProps) => {
+  return (
+    <>
+      <Tabs>
+        <div className={cn("flex items-center", className)} {...props}>
+          <TabsList>
+            {tabList.map((tab) => (
+              <TabsTrigger value={tab.value} key={tab.value}>
+                {tab.title}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </div>
+        <div>{children}</div>
+      </Tabs>
     </>
   );
 };
